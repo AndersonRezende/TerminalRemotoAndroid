@@ -4,12 +4,17 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:background">@color/colorBlack</item>
     </style>
+
     <style name="terminalInput">
         <item name="android:textColor">@color/colorWhite</item>
     </style>
-    <style name="terminalButton">
 
+    <style name="terminalButton">
         <item name="android:background">@color/colorWhite</item>
         <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="conexaoText">
+        <item name="android:textSize">16dp</item>
     </style>
 </resources>
