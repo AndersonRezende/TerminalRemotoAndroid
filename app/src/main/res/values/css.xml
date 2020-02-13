@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="terminalLayout">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@color/colorBlack</item>
+    </style>
+    <style name="terminalInput">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="terminalButton">
+
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+</resources>

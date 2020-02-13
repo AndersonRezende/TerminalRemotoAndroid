@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Terminal Remoto</string>
+    <string name="ip_endereco">192.168.0.100</string>
+    <string name="porta_numero">9999</string>
+    <string name="ip">IP</string>
+    <string name="porta">PORTA</string>
+    <string name="senha">SENHA</string>
+
+    <string name="bt_enviar">ENVIAR</string>
+    <string name="bt_conectar">CONECTAR</string>
+    <string name="bt_volume_mais">VOLUME +</string>
+    <string name="bt_volume_menos">VOLUME -</string>
+    <string name="bt_desligar">DESLIGAR</string>
+    <string name="bt_suspender">SUSPENDER</string>
+    <string name="bt_reiniciar">REINICIAR</string>
+    <string name="bt_bloquear">BLOQUEAR</string>
+</resources>
