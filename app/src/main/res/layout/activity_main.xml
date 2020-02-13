@@ -47,7 +47,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorLightBlue"
+                android:background="#FFFFFF"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -101,6 +101,7 @@
                         android:text="@string/porta_numero"
                         android:textAlignment="center" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -109,11 +110,11 @@
 
                     <TextView
                         android:id="@+id/textView8"
+                        style="@style/conexaoText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text="@string/senha"
-                        style="@style/conexaoText" />
+                        android:text="@string/senha" />
 
                     <EditText
                         android:id="@+id/editTextSenha"

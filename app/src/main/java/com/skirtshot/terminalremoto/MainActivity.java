@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                             cliente = new Socket(ip, porta);
                             if(cliente.isConnected()) {
                                 SocketHandler.setSocket(cliente);
+                                DataOutputStream saida = new DataOutputStream(cliente.getOutputStream());
+                                saida.writeUTF(senha);
                                 Intent intent = new Intent(context, ComandoActivity.class);
                                 startActivity(intent);
                             }

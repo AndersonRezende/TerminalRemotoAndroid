@@ -2,6 +2,7 @@ package com.skirtshot.terminalremoto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +15,10 @@ import java.net.Socket;
 
 import adaptador.Comando;
 import gerenciador.Monitor;
+import gerenciador.SocketHandler;
+import thread.AguardaMensagem;
 
-public class ComandoActivity extends AppCompatActivity implements View.OnClickListener{
+public class ComandoActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String IP = "192.168.0.100";
     private int PORTA = 9999;
@@ -32,25 +35,12 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comando);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        monitor = new Monitor();
+        configurarComunicacao();
+        ativarRecebimentoMensagem();
 
-        final Button btConectar = (Button) findViewById(R.id.buttonConectar);
-        btConectar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fecharConexao();
-                EditText editTextIp = (EditText) findViewById(R.id.editTextIp);
-                EditText editTextPorta = (EditText) findViewById(R.id.editTextPorta);
-                EditText editTextSenha = (EditText) findViewById(R.id.editTextSenha);
-                IP = editTextIp.getText().toString();
-                PORTA = Integer.parseInt(editTextPorta.getText().toString());
-                SENHA = editTextSenha.getText().toString();
 
-                Thread t = new Thread(new Conecta(monitor));
-                t.start();
-            }
-        });
 
         Button btEnviar = (Button) findViewById(R.id.buttonEnviar);
         btEnviar.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +83,30 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         recebe.start();
     }
 
-    public void enviarComando(String comando)
-    {
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        fecharConexao();
+    }
+
+    private void ativarRecebimentoMensagem() {
+        Thread aguardaMensagem = new Thread(new AguardaMensagem(monitor, entrada));
+        aguardaMensagem.start();
+    }
+
+    private void configurarComunicacao() {
+        monitor = new Monitor();
+        cliente = SocketHandler.getSocket();
+        try {
+            saida = new DataOutputStream(cliente.getOutputStream());
+            entrada = new DataInputStream(cliente.getInputStream());
+        }
+        catch (IOException e)
+        {   e.printStackTrace();    }
+    }
+
+    public void enviarComando(String comando){
         try
         {
             if(cliente != null && saida != null)
@@ -104,8 +116,7 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         {   e.printStackTrace();    }
     }
 
-    public void fecharConexao()
-    {
+    public void fecharConexao() {
         try {
             if (cliente != null && cliente.isConnected())
             {
@@ -118,6 +129,7 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         {   e.printStackTrace();    }
 
     }
+
 
 
     @Override
@@ -156,40 +168,4 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
-    class Conecta implements Runnable
-    {
-        private Monitor monitor;
-
-        public Conecta(Monitor monitor)
-        {   this.monitor = monitor; }
-
-        @Override
-        public void run()
-        {
-            try
-            {
-                cliente = new Socket(IP, PORTA);
-
-                saida = new DataOutputStream(cliente.getOutputStream());
-                entrada = new DataInputStream(cliente.getInputStream());
-                saida.writeUTF(SENHA);
-                while(true)
-                {
-                    try
-                    {
-                        String recebido = entrada.readUTF();
-                        System.out.println(recebido);
-                        monitor.adicionarMensagem(recebido);
-                    }
-                    catch (IOException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            catch (IOException e)
-            {   e.printStackTrace();    }
-        }
-    }
 }
