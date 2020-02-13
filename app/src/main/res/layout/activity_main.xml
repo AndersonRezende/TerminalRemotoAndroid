@@ -65,7 +65,7 @@
                         android:text="@string/ip" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/editTextIp"
                         style="@style/conexaoText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         android:text="@string/porta" />
 
                     <EditText
-                        android:id="@+id/editText2"
+                        android:id="@+id/editTextPorta"
                         style="@style/conexaoText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                         style="@style/conexaoText" />
 
                     <EditText
-                        android:id="@+id/editText3"
+                        android:id="@+id/editTextSenha"
                         style="@style/conexaoText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonConectar"
                     style="@style/conexaoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

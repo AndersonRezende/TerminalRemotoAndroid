@@ -35,9 +35,6 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
 
         monitor = new Monitor();
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         final Button btConectar = (Button) findViewById(R.id.buttonConectar);
         btConectar.setOnClickListener(new View.OnClickListener() {
             @Override
