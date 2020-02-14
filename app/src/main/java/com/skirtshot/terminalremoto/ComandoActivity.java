@@ -2,9 +2,12 @@ package com.skirtshot.terminalremoto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -19,11 +22,6 @@ import gerenciador.SocketHandler;
 import thread.AguardaMensagem;
 
 public class ComandoActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private String IP = "192.168.0.100";
-    private int PORTA = 9999;
-    private String SENHA = "0000";
-
     private String mensagem = "";
     private EditText editTextResultado;
     private Monitor monitor;
@@ -166,6 +164,4 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         });
         enviar.start();
     }
-
-
 }
