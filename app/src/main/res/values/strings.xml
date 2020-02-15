@@ -19,6 +19,9 @@
     <string name="bt_suspender">SUSPENDER</string>
     <string name="bt_reiniciar">REINICIAR</string>
     <string name="bt_bloquear">BLOQUEAR</string>
+    <string name="bt_ls">LISTAR DIRETÓRIO</string>
+    <string name="bt_pwd">CAMINHO DIRETÓRIO</string>
+    <string name="bt_ip">CONFIGURAÇÕES DE IP</string>
 
     <string name="descricao_imagem_terminal">TERMINAL REMOTO</string>
 </resources>

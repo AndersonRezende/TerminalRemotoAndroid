@@ -104,10 +104,53 @@
 
             </TableRow>
 
+
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center|center_horizontal" />
+                android:gravity="center|center_horizontal">
+
+                <Button
+                    android:id="@+id/buttonListarDiretorio"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_list"
+                    android:onClick="onClick"
+                    android:text="@string/bt_ls" />
+
+                <Button
+                    android:id="@+id/buttonPwd"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_folder_open"
+                    android:onClick="onClick"
+                    android:text="@string/bt_pwd" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/buttonIp"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_router"
+                    android:text="@string/bt_ip" />
+            </TableRow>
+
         </TableLayout>
 
         <LinearLayout
@@ -173,9 +216,11 @@
                     android:layout_weight="0"
                     android:editable="false"
                     android:ems="10"
+                    android:enabled="false"
                     android:gravity="start|top"
                     android:inputType="textMultiLine" />
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

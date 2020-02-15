@@ -141,6 +141,9 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.buttonVolumeMenos:
                 comando = ""+Comando.DIMINUIR_VOLUME.getValor();
                 break;
+            case R.id.buttonVolumeMudo:
+                comando = ""+Comando.MUDO.getValor();
+                break;
             case R.id.buttonSuspender:
                 comando = ""+Comando.SUSPENDER.getValor();
                 break;
@@ -152,6 +155,15 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.buttonDesligar:
                 comando = ""+Comando.DESLIGAR.getValor();
+                break;
+            case R.id.buttonListarDiretorio:
+                comando = ""+Comando.LISTAR_DIRETORIO.getValor();
+                break;
+            case R.id.buttonPwd:
+                comando = ""+Comando.PWD.getValor();
+                break;
+            case R.id.buttonIp:
+                comando = ""+Comando.CONFIGURACAO_IP.getValor();
                 break;
         }
 
