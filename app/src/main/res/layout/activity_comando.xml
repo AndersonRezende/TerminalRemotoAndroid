@@ -184,6 +184,15 @@
                     android:ems="10"
                     android:inputType="textPersonName" />
 
+                <Switch
+                    android:id="@+id/switchMensagemComando"
+                    style="@style/terminalInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:switchTextAppearance="@style/terminalInput"
+                    android:text="@string/switch_comando_mensagem" />
+
                 <Button
                     android:id="@+id/buttonEnviar"
                     style="@style/terminalButton"

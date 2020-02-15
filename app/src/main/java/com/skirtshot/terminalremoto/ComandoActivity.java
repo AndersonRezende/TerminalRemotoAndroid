@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -45,7 +46,13 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 EditText editTextComando = (EditText) findViewById(R.id.editTextComando);
-                final String comando = editTextComando.getText().toString();
+                Switch switchMensagemComando = (Switch) findViewById(R.id.switchMensagemComando);
+                String aux = editTextComando.getText().toString();
+
+                if(switchMensagemComando.isChecked())
+                    aux = "echo \""+editTextComando.getText().toString()+"\"";
+
+                final String comando = aux;
                 editTextComando.setText("");
 
                 final String finalComando = comando;

@@ -23,5 +23,7 @@
     <string name="bt_pwd">CAMINHO DIRETÓRIO</string>
     <string name="bt_ip">CONFIGURAÇÕES DE IP</string>
 
+    <string name="switch_comando_mensagem">COMANDO/MENSAGEM</string>
+
     <string name="descricao_imagem_terminal">TERMINAL REMOTO</string>
 </resources>
