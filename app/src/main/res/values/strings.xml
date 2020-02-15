@@ -6,15 +6,24 @@
     <string name="ip">IP</string>
     <string name="porta">PORTA</string>
     <string name="senha">SENHA</string>
+    <string name="resultado">RESULTADO</string>
+    <string name="enviar">ENVIAR COMANDO</string>
 
     <string name="bt_enviar">ENVIAR</string>
     <string name="bt_conectar">CONECTAR</string>
     <string name="bt_volume_mais">VOLUME +</string>
     <string name="bt_volume_menos">VOLUME -</string>
+    <string name="bt_volume_mudo">MUDO</string>
+    <string name="bt_volume_desligado">DESLIGADO</string>
     <string name="bt_desligar">DESLIGAR</string>
     <string name="bt_suspender">SUSPENDER</string>
     <string name="bt_reiniciar">REINICIAR</string>
     <string name="bt_bloquear">BLOQUEAR</string>
+    <string name="bt_ls">LISTAR DIRETÓRIO</string>
+    <string name="bt_pwd">CAMINHO DIRETÓRIO</string>
+    <string name="bt_ip">CONFIGURAÇÕES DE IP</string>
+
+    <string name="switch_comando_mensagem">COMANDO/MENSAGEM</string>
 
     <string name="descricao_imagem_terminal">TERMINAL REMOTO</string>
 </resources>

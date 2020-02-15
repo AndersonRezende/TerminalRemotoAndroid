@@ -2,11 +2,15 @@ package com.skirtshot.terminalremoto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -19,11 +23,6 @@ import gerenciador.SocketHandler;
 import thread.AguardaMensagem;
 
 public class ComandoActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private String IP = "192.168.0.100";
-    private int PORTA = 9999;
-    private String SENHA = "0000";
-
     private String mensagem = "";
     private EditText editTextResultado;
     private Monitor monitor;
@@ -47,7 +46,13 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 EditText editTextComando = (EditText) findViewById(R.id.editTextComando);
-                final String comando = editTextComando.getText().toString();
+                Switch switchMensagemComando = (Switch) findViewById(R.id.switchMensagemComando);
+                String aux = editTextComando.getText().toString();
+
+                if(switchMensagemComando.isChecked())
+                    aux = "echo \""+editTextComando.getText().toString()+"\"";
+
+                final String comando = aux;
                 editTextComando.setText("");
 
                 final String finalComando = comando;
@@ -143,6 +148,9 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.buttonVolumeMenos:
                 comando = ""+Comando.DIMINUIR_VOLUME.getValor();
                 break;
+            case R.id.buttonVolumeMudo:
+                comando = ""+Comando.MUDO.getValor();
+                break;
             case R.id.buttonSuspender:
                 comando = ""+Comando.SUSPENDER.getValor();
                 break;
@@ -155,6 +163,15 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.buttonDesligar:
                 comando = ""+Comando.DESLIGAR.getValor();
                 break;
+            case R.id.buttonListarDiretorio:
+                comando = ""+Comando.LISTAR_DIRETORIO.getValor();
+                break;
+            case R.id.buttonPwd:
+                comando = ""+Comando.PWD.getValor();
+                break;
+            case R.id.buttonIp:
+                comando = ""+Comando.CONFIGURACAO_IP.getValor();
+                break;
         }
 
         final String finalComando = comando;
@@ -166,6 +183,4 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         });
         enviar.start();
     }
-
-
 }

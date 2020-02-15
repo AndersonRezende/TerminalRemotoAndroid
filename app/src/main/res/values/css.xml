@@ -10,7 +10,7 @@
     </style>
 
     <style name="terminalButton">
-        <item name="android:background">@color/colorWhite</item>
+        <item name="android:backgroundTint">@color/colorWhite</item>
         <item name="android:textColor">@color/colorBlack</item>
     </style>
 
