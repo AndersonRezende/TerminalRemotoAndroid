@@ -8,69 +8,19 @@
     tools:context=".ComandoActivity">
 
     <LinearLayout
+        android:id="@+id/LinearLayoutPai"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/editTextComando"
-                style="@style/terminalInput"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/buttonEnviar"
-                style="@style/terminalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/bt_enviar"
-                tools:text="@string/bt_enviar" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TableLayout
-            android:id="@+id/TableLayoutBotoes"
+            android:id="@+id/TableLayoutBotoesControle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/buttonVolumeMais"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClick"
-                    android:text="@string/bt_volume_mais" />
-
-                <Button
-                    android:id="@+id/buttonVolumeMenos"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClick"
-                    android:text="@string/bt_volume_menos" />
-            </TableRow>
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -81,15 +31,24 @@
                     android:id="@+id/buttonDesligar"
                     style="@style/terminalButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@drawable/ic_action_name"
                     android:onClick="onClick"
                     android:text="@string/bt_desligar" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal">
 
                 <Button
                     android:id="@+id/buttonReiniciar"
                     style="@style/terminalButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_restart"
                     android:onClick="onClick"
                     android:text="@string/bt_reiniciar" />
 
@@ -98,6 +57,7 @@
                     style="@style/terminalButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_notebook"
                     android:onClick="onClick"
                     android:text="@string/bt_suspender" />
 
@@ -106,22 +66,118 @@
                     style="@style/terminalButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_tv_off"
                     android:onClick="onClick"
                     android:text="@string/bt_bloquear" />
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal">
+
+                <Button
+                    android:id="@+id/buttonVolumeMais"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_volume_up"
+                    android:onClick="onClick"
+                    android:text="@string/bt_volume_mais" />
+
+                <Button
+                    android:id="@+id/buttonVolumeMenos"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_volume_down"
+                    android:onClick="onClick"
+                    android:text="@string/bt_volume_menos" />
+
+                <Button
+                    android:id="@+id/buttonVolumeMudo"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_volume_off"
+                    android:text="@string/bt_volume_mudo" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|center_horizontal" />
         </TableLayout>
 
-        <EditText
-            android:id="@+id/editTextResultado"
-            style="@style/terminalInput"
+        <LinearLayout
+            android:id="@+id/LinearLayoutPaiComandoResultado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:editable="false"
-            android:ems="10"
-            android:enabled="false"
-            android:gravity="start|top"
-            android:inputType="textMultiLine" />
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutComando"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/terminalInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/enviar" />
+
+                <EditText
+                    android:id="@+id/editTextComando"
+                    style="@style/terminalInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/buttonEnviar"
+                    style="@style/terminalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/bt_enviar" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutResposta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/terminalInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/resultado" />
+
+                <EditText
+                    android:id="@+id/editTextResultado"
+                    style="@style/terminalInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_weight="0"
+                    android:editable="false"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
