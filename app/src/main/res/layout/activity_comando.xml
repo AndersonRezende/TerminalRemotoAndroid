@@ -100,6 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/ic_volume_off"
+                    android:onClick="onClick"
                     android:text="@string/bt_volume_mudo" />
 
             </TableRow>
@@ -148,6 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/ic_router"
+                    android:onClick="onClick"
                     android:text="@string/bt_ip" />
             </TableRow>
 
