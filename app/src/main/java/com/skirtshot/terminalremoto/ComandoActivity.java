@@ -50,7 +50,7 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
                 String aux = editTextComando.getText().toString();
 
                 if(switchMensagemComando.isChecked())
-                    aux = "echo \""+editTextComando.getText().toString()+"\"";
+                    aux = "echo "+editTextComando.getText().toString();
 
                 final String comando = aux;
                 editTextComando.setText("");
