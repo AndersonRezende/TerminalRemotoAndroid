@@ -10,15 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-
 import adaptador.Comando;
 import gerenciador.Monitor;
 import gerenciador.ConexaoHandler;
-import thread.AguardaMensagem;
 
 public class ComandoActivity extends AppCompatActivity implements View.OnClickListener {
     private String mensagem = "";
@@ -39,10 +33,12 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             public void onClick(View v) {
                 EditText editTextComando = (EditText) findViewById(R.id.editTextComando);
                 Switch switchMensagemComando = (Switch) findViewById(R.id.switchMensagemComando);
-                String aux = editTextComando.getText().toString();
+                String aux;
 
                 if(switchMensagemComando.isChecked())
-                    aux = "echo "+editTextComando.getText().toString();
+                    aux = Comando.mensagem(editTextComando.getText().toString());
+                else
+                    aux = Comando.comandoTerminal(editTextComando.getText().toString());
 
                 final String comando = aux;
                 editTextComando.setText("");
@@ -109,34 +105,34 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId())
         {
             case R.id.buttonVolumeMais:
-                comando = ""+ Comando.AUMENTAR_VOLUME.getValor();
+                comando = "" + Comando.AUMENTAR_VOLUME;
                 break;
             case R.id.buttonVolumeMenos:
-                comando = ""+Comando.DIMINUIR_VOLUME.getValor();
+                comando = ""+ Comando.DIMINUIR_VOLUME;
                 break;
             case R.id.buttonVolumeMudo:
-                comando = ""+Comando.MUDO.getValor();
+                comando = ""+ Comando.MUDO;
                 break;
             case R.id.buttonSuspender:
-                comando = ""+Comando.SUSPENDER.getValor();
+                comando = ""+ Comando.SUSPENDER;
                 break;
             case R.id.buttonBloquear:
-                comando = ""+Comando.BLOQUEAR_TELA.getValor();
+                comando = ""+ Comando.BLOQUEAR_TELA;
                 break;
             case R.id.buttonReiniciar:
-                comando = ""+Comando.REINICIAR.getValor();
+                comando = ""+ Comando.REINICIAR;
                 break;
             case R.id.buttonDesligar:
-                comando = ""+Comando.DESLIGAR.getValor();
+                comando = ""+ Comando.DESLIGAR;
                 break;
             case R.id.buttonListarDiretorio:
-                comando = ""+Comando.LISTAR_DIRETORIO.getValor();
+                comando = ""+ Comando.LISTAR_DIRETORIO;
                 break;
             case R.id.buttonPwd:
-                comando = ""+Comando.PWD.getValor();
+                comando = ""+ Comando.PWD;
                 break;
             case R.id.buttonIp:
-                comando = ""+Comando.CONFIGURACAO_IP.getValor();
+                comando = ""+ Comando.CONFIGURACAO_IP;
                 break;
         }
 

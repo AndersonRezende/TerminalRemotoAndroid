@@ -15,6 +15,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import adaptador.Comando;
 import gerenciador.Monitor;
 import gerenciador.ConexaoHandler;
 
@@ -41,9 +42,7 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
                 x = (xMobile * widthDesktop) / widthMobile;
                 y = (yMobile * heightDesktop) / heightMobile;
 
-                System.out.println("Xmax: "+v.getWidth());
                 final String comando = "robot-mover " + x + " " + y;
-                System.out.println("Clique em->\tX: "+x+"\tY:"+y);
 
                 Thread enviar = new Thread(new Runnable() {
                     @Override
@@ -63,32 +62,11 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
         String comando = "robot-mover ";
         switch (v.getId())
         {
-            case R.id.buttonCima:
-                x -= 10;
-                comando += y + " " + x;
-                break;
-            case R.id.buttonEsquerda:
-                y -= 10;
-                comando += y + " " + x;
-                break;
-            case R.id.buttonCentro:
-                x = 1080/2;
-                y = 1920/2;
-                comando += y + " " + x;
-                break;
-            case R.id.buttonDireita:
-                y += 10;
-                comando += y + " " + x;
-                break;
-            case R.id.buttonBaixo:
-                x += 10;
-                comando += y + " " + x;
-                break;
             case R.id.buttonEsquerdo:
-                comando += y + " " + x;
+                comando += Comando.cliqueMouse(Comando.BOTAO_ESQUERDO_MOUSE);
                 break;
             case R.id.buttonDireito:
-                comando += y + " " + x;
+                comando += Comando.cliqueMouse(Comando.BOTAO_DIREITO_MOUSE);
                 break;
         }
 
