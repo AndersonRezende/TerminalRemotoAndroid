@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import gerenciador.SocketHandler;
+import gerenciador.Monitor;
+import gerenciador.ConexaoHandler;
+import thread.AguardaMensagem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,11 +53,36 @@ public class MainActivity extends AppCompatActivity {
                         {
                             cliente = new Socket(ip, porta);
                             if(cliente.isConnected()) {
-                                SocketHandler.setSocket(cliente);
                                 DataOutputStream saida = new DataOutputStream(cliente.getOutputStream());
+                                DataInputStream entrada = new DataInputStream(cliente.getInputStream());
+                                Monitor monitor = new Monitor();
+
+                                ConexaoHandler.setSocket(cliente);
+                                ConexaoHandler.setEntrada(entrada);
+                                ConexaoHandler.setSaida(saida);
+                                ConexaoHandler.setMonitor(monitor);
+
                                 saida.writeUTF(senha);
-                                Intent intent = new Intent(context, ComandoActivity.class);
-                                startActivity(intent);
+                                int resultado = entrada.readInt();
+                                if(resultado == 0) {
+                                    Thread aguardaMensagem = new Thread(new AguardaMensagem(monitor));
+                                    aguardaMensagem.start();
+
+                                    Intent intent = new Intent(context, ComandoActivity.class);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Thread thread = new Thread(){
+                                        public void run(){
+                                            runOnUiThread(new Runnable() {
+                                                public void run() {
+                                                    Toast.makeText(MainActivity.this, "Senha incorreta, tente novamente.", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
+                                        }
+                                    };
+                                    thread.start();
+                                }
                             }
                         }
                         catch (IOException e)
@@ -63,5 +92,19 @@ public class MainActivity extends AppCompatActivity {
                 iniciaSocket.start();
             }
         });
+    }
+
+    protected void onStart() {
+        super.onStart();
+        try
+        {
+            if(ConexaoHandler.getSocket() != null) {
+                ConexaoHandler.getSaida().close();
+                ConexaoHandler.getEntrada().close();
+                ConexaoHandler.getSocket().close();
+            }
+        }
+        catch (IOException e)
+        {   e.printStackTrace();    }
     }
 }

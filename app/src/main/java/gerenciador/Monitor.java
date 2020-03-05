@@ -9,10 +9,10 @@ public class Monitor
     public Monitor()
     {   mensagens = new ArrayList<>();  }
 
-    public void adicionarMensagem(String mensagem)
+    public synchronized void adicionarMensagem(String mensagem)
     {   this.mensagens.add(mensagem);   }
 
-    public String retirarMensagem()
+    public synchronized String retirarMensagem()
     {
         String saida = "";
         if(mensagens.size() > 0)
@@ -20,6 +20,6 @@ public class Monitor
         return saida;
     }
 
-    public boolean haMensagem()
+    public synchronized boolean haMensagem()
     {   return !mensagens.isEmpty(); }
 }

@@ -2,12 +2,10 @@ package com.skirtshot.terminalremoto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -19,27 +17,21 @@ import java.net.Socket;
 
 import adaptador.Comando;
 import gerenciador.Monitor;
-import gerenciador.SocketHandler;
+import gerenciador.ConexaoHandler;
 import thread.AguardaMensagem;
 
 public class ComandoActivity extends AppCompatActivity implements View.OnClickListener {
     private String mensagem = "";
     private EditText editTextResultado;
-    private Monitor monitor;
-    private Socket cliente = null;
-    private DataOutputStream saida = null;
-    private DataInputStream entrada = null;
+    private Monitor monitor = ConexaoHandler.getMonitor();
+    private Context context = this;
+    private boolean execucaoComando = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comando);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        configurarComunicacao();
-        ativarRecebimentoMensagem();
-
-
 
         Button btEnviar = (Button) findViewById(R.id.buttonEnviar);
         btEnviar.setOnClickListener(new View.OnClickListener() {
@@ -66,15 +58,28 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
+        Button btMouse = (Button) findViewById(R.id.buttonMouse);
+        btMouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MouseActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    protected void onStart(){
+        super.onStart();
+        execucaoComando = true;
         editTextResultado = (EditText) findViewById(R.id.editTextResultado);
         Thread recebe = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(true) {
+                while(execucaoComando) {
                     if(monitor.haMensagem()) {
                         mensagem = monitor.retirarMensagem();
+                        System.out.println(mensagem);
                         runOnUiThread(new Runnable() {
-
                             @Override
                             public void run() {
                                 editTextResultado.setText(mensagem);
@@ -88,54 +93,15 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
         recebe.start();
     }
 
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        fecharConexao();
-    }
-
-    private void ativarRecebimentoMensagem() {
-        Thread aguardaMensagem = new Thread(new AguardaMensagem(monitor, entrada));
-        aguardaMensagem.start();
-    }
-
-    private void configurarComunicacao() {
-        monitor = new Monitor();
-        cliente = SocketHandler.getSocket();
-        try {
-            saida = new DataOutputStream(cliente.getOutputStream());
-            entrada = new DataInputStream(cliente.getInputStream());
-        }
-        catch (IOException e)
-        {   e.printStackTrace();    }
+    protected void onStop() {
+        super.onStop();
+        execucaoComando = false;
     }
 
     public void enviarComando(String comando){
-        try
-        {
-            if(cliente != null && saida != null)
-                saida.writeUTF(comando);
-        }
-        catch (IOException e)
-        {   e.printStackTrace();    }
+        if(ConexaoHandler.conectado())
+            ConexaoHandler.mandarMensagem(comando);
     }
-
-    public void fecharConexao() {
-        try {
-            if (cliente != null && cliente.isConnected())
-            {
-                entrada.close();
-                saida.close();
-                cliente.close();
-            }
-        }
-        catch (IOException e)
-        {   e.printStackTrace();    }
-
-    }
-
-
 
     @Override
     public void onClick(View v) {

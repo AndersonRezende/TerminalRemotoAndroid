@@ -3,15 +3,16 @@ package thread;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+import gerenciador.ConexaoHandler;
 import gerenciador.Monitor;
 
 public class AguardaMensagem implements Runnable{
     private Monitor monitor;
     private DataInputStream entrada;
 
-    public AguardaMensagem(Monitor monitor, DataInputStream entrada){
+    public AguardaMensagem(Monitor monitor){
         this.monitor = monitor;
-        this.entrada = entrada;
+        this.entrada = ConexaoHandler.getEntrada();
     }
 
     @Override

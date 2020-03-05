@@ -22,6 +22,14 @@
     <string name="bt_ls">LISTAR DIRETÓRIO</string>
     <string name="bt_pwd">CAMINHO DIRETÓRIO</string>
     <string name="bt_ip">CONFIGURAÇÕES DE IP</string>
+    <string name="bt_cima">CIMA</string>
+    <string name="bt_esquerda">ESQUERDA</string>
+    <string name="bt_centro">CENTRO</string>
+    <string name="bt_direita">DIREITA</string>
+    <string name="bt_baixo">BAIXO</string>
+    <string name="bt_esquerdo">ESQUERDO</string>
+    <string name="bt_direito">DIREITO</string>
+    <string name="bt_mouse">MOUSE</string>
 
     <string name="switch_comando_mensagem">COMANDO/MENSAGEM</string>
 
