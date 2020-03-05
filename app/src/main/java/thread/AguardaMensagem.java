@@ -27,7 +27,9 @@ public class AguardaMensagem implements Runnable{
             }
             catch (IOException e)
             {
+                System.err.println("Conexão encerrada.");
                 e.printStackTrace();
+                break;
             }
         }
     }

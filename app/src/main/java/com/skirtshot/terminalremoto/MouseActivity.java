@@ -42,7 +42,7 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
                 x = (xMobile * widthDesktop) / widthMobile;
                 y = (yMobile * heightDesktop) / heightMobile;
 
-                final String comando = "robot-mover " + x + " " + y;
+                final String comando = Comando.moverMouse(x, y);
 
                 Thread enviar = new Thread(new Runnable() {
                     @Override
@@ -59,14 +59,14 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        String comando = "robot-mover ";
+        String comando = "";
         switch (v.getId())
         {
             case R.id.buttonEsquerdo:
-                comando += Comando.cliqueMouse(Comando.BOTAO_ESQUERDO_MOUSE);
+                comando += Comando.clicarMouse(Comando.BOTAO_ESQUERDO_MOUSE);
                 break;
             case R.id.buttonDireito:
-                comando += Comando.cliqueMouse(Comando.BOTAO_DIREITO_MOUSE);
+                comando += Comando.clicarMouse(Comando.BOTAO_DIREITO_MOUSE);
                 break;
         }
 

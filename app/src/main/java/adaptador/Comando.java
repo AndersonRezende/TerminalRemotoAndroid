@@ -23,7 +23,7 @@ public class Comando {
         return comando;
     }
 
-    public static String cliqueMouse(int botao) {
+    public static String clicarMouse(int botao) {
         String comando = "robot-clicar " + botao;
         return comando;
     }
