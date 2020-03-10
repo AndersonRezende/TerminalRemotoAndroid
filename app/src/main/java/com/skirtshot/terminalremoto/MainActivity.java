@@ -15,8 +15,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import adaptador.Comando;
 import gerenciador.Monitor;
 import gerenciador.ConexaoHandler;
+import host.Desktop;
 import thread.AguardaMensagem;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
                                 saida.writeUTF(senha);
                                 int resultado = entrada.readInt();
                                 if(resultado == 0) {
+                                    if(ConexaoHandler.mandarMensagem(Comando.comandoInformacoesSistema())) {
+                                        Desktop.configurarInformacoes(entrada.readUTF());
+                                    }
+
                                     Thread aguardaMensagem = new Thread(new AguardaMensagem(monitor));
                                     aguardaMensagem.start();
 

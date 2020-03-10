@@ -74,7 +74,6 @@ public class ComandoActivity extends AppCompatActivity implements View.OnClickLi
                 while(execucaoComando) {
                     if(monitor.haMensagem()) {
                         mensagem = monitor.retirarMensagem();
-                        System.out.println(mensagem);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

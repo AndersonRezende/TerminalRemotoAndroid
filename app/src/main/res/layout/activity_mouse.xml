@@ -8,8 +8,8 @@
     tools:context=".MouseActivity">
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:isScrollContainer="false"
@@ -21,13 +21,13 @@
         <FrameLayout
             android:id="@+id/FrameLayoutTela"
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="wrap_content">
 
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="100dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -55,7 +55,8 @@
             style="@style/touchpadArea"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:scrollbars="vertical">
 
         </LinearLayout>
 

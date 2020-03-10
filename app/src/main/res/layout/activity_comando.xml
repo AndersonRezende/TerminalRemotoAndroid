@@ -7,258 +7,261 @@
     android:layout_height="match_parent"
     tools:context=".ComandoActivity">
 
-    <LinearLayout
-        android:id="@+id/LinearLayoutPai"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TableLayout
-            android:id="@+id/TableLayoutBotoesControle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/buttonDesligar"
-                    style="@style/terminalButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableTop="@drawable/ic_action_name"
-                    android:onClick="onClick"
-                    android:text="@string/bt_desligar" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_horizontal">
-
-                <Button
-                    android:id="@+id/buttonReiniciar"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_restart"
-                    android:onClick="onClick"
-                    android:text="@string/bt_reiniciar" />
-
-                <Button
-                    android:id="@+id/buttonSuspender"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_notebook"
-                    android:onClick="onClick"
-                    android:text="@string/bt_suspender" />
-
-                <Button
-                    android:id="@+id/buttonBloquear"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_tv_off"
-                    android:onClick="onClick"
-                    android:text="@string/bt_bloquear" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_horizontal">
-
-                <Button
-                    android:id="@+id/buttonVolumeMais"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_volume_up"
-                    android:onClick="onClick"
-                    android:text="@string/bt_volume_mais" />
-
-                <Button
-                    android:id="@+id/buttonVolumeMenos"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_volume_down"
-                    android:onClick="onClick"
-                    android:text="@string/bt_volume_menos" />
-
-                <Button
-                    android:id="@+id/buttonVolumeMudo"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_volume_off"
-                    android:onClick="onClick"
-                    android:text="@string/bt_volume_mudo" />
-
-            </TableRow>
-
-
-        </TableLayout>
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|center_horizontal">
-
-                <Button
-                    android:id="@+id/buttonListarDiretorio"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_list"
-                    android:onClick="onClick"
-                    android:text="@string/bt_ls" />
-
-                <Button
-                    android:id="@+id/buttonPwd"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_folder_open"
-                    android:onClick="onClick"
-                    android:text="@string/bt_pwd" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center" >
-
-                <Button
-                    android:id="@+id/buttonIp"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_router"
-                    android:onClick="onClick"
-                    android:text="@string/bt_ip" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center" >
-
-                <Button
-                    android:id="@+id/buttonMouse"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_mouse"
-                    android:text="@string/bt_mouse" />
-
-                <Button
-                    android:id="@+id/buttonTeclado"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/ic_teclado"
-                    android:text="@string/bt_teclado" />
-
-            </TableRow>
-
-        </TableLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/LinearLayoutPaiComandoResultado"
+            android:id="@+id/LinearLayoutPai"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom|center_horizontal"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/LinearLayoutComando"
+            <TableLayout
+                android:id="@+id/TableLayoutBotoesControle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/buttonDesligar"
+                        style="@style/terminalButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:drawableTop="@drawable/ic_action_name"
+                        android:onClick="onClick"
+                        android:text="@string/bt_desligar" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal">
+
+                    <Button
+                        android:id="@+id/buttonReiniciar"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_restart"
+                        android:onClick="onClick"
+                        android:text="@string/bt_reiniciar" />
+
+                    <Button
+                        android:id="@+id/buttonSuspender"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_notebook"
+                        android:onClick="onClick"
+                        android:text="@string/bt_suspender" />
+
+                    <Button
+                        android:id="@+id/buttonBloquear"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_tv_off"
+                        android:onClick="onClick"
+                        android:text="@string/bt_bloquear" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal">
+
+                    <Button
+                        android:id="@+id/buttonVolumeMais"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_volume_up"
+                        android:onClick="onClick"
+                        android:text="@string/bt_volume_mais" />
+
+                    <Button
+                        android:id="@+id/buttonVolumeMenos"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_volume_down"
+                        android:onClick="onClick"
+                        android:text="@string/bt_volume_menos" />
+
+                    <Button
+                        android:id="@+id/buttonVolumeMudo"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_volume_off"
+                        android:onClick="onClick"
+                        android:text="@string/bt_volume_mudo" />
+
+                </TableRow>
+
+
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_horizontal">
+
+                    <Button
+                        android:id="@+id/buttonListarDiretorio"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_list"
+                        android:onClick="onClick"
+                        android:text="@string/bt_ls" />
+
+                    <Button
+                        android:id="@+id/buttonPwd"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_folder_open"
+                        android:onClick="onClick"
+                        android:text="@string/bt_pwd" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/buttonIp"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_router"
+                        android:onClick="onClick"
+                        android:text="@string/bt_ip" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/buttonMouse"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_mouse"
+                        android:text="@string/bt_mouse" />
+
+                    <Button
+                        android:id="@+id/buttonTeclado"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_teclado"
+                        android:text="@string/bt_teclado" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutPaiComandoResultado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="bottom|center_horizontal"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    style="@style/terminalInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="@string/enviar" />
-
-                <EditText
-                    android:id="@+id/editTextComando"
-                    style="@style/terminalInput"
+                <LinearLayout
+                    android:id="@+id/LinearLayoutComando"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="vertical">
 
-                <Switch
-                    android:id="@+id/switchMensagemComando"
-                    style="@style/terminalInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:switchTextAppearance="@style/terminalInput"
-                    android:text="@string/switch_comando_mensagem" />
+                    <TextView
+                        android:id="@+id/textView3"
+                        style="@style/terminalInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/enviar" />
 
-                <Button
-                    android:id="@+id/buttonEnviar"
-                    style="@style/terminalButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:drawableTop="@drawable/ic_send"
-                    android:text="@string/bt_enviar" />
-            </LinearLayout>
+                    <EditText
+                        android:id="@+id/editTextComando"
+                        style="@style/terminalInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:ems="10"
+                        android:inputType="textPersonName" />
 
-            <LinearLayout
-                android:id="@+id/LinearLayoutResposta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom|center_horizontal"
-                android:orientation="vertical">
+                    <Switch
+                        android:id="@+id/switchMensagemComando"
+                        style="@style/terminalInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:switchTextAppearance="@style/terminalInput"
+                        android:text="@string/switch_comando_mensagem" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    style="@style/terminalInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="@string/resultado" />
+                    <Button
+                        android:id="@+id/buttonEnviar"
+                        style="@style/terminalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:drawableTop="@drawable/ic_send"
+                        android:text="@string/bt_enviar" />
+                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editTextResultado"
-                    style="@style/terminalInput"
+                <LinearLayout
+                    android:id="@+id/LinearLayoutResposta"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_weight="0"
-                    android:ems="10"
-                    android:focusable="false"
-                    android:enabled="true"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical" />
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        style="@style/terminalInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:text="@string/resultado" />
+
+                    <EditText
+                        android:id="@+id/editTextResultado"
+                        style="@style/terminalInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_weight="0"
+                        android:ems="10"
+                        android:enabled="true"
+                        android:focusable="false"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"
+                        android:scrollbars="vertical" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,4 +42,9 @@ public class Comando {
         String comandoSistema = "system-"+comando;
         return comandoSistema;
     }
+
+    public static String comandoInformacoesSistema() {
+        String comando = "info-";
+        return comando;
+    }
 }

@@ -22,7 +22,7 @@ public class AguardaMensagem implements Runnable{
             try
             {
                 String recebido = entrada.readUTF();
-                System.out.println(recebido);
+                System.out.println("Recebido do servidor: "+ recebido);
                 monitor.adicionarMensagem(recebido);
             }
             catch (IOException e)

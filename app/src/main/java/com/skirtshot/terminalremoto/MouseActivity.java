@@ -1,28 +1,23 @@
 package com.skirtshot.terminalremoto;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
+import androidx.appcompat.app.AppCompatActivity;
 
 import adaptador.Comando;
-import gerenciador.Monitor;
 import gerenciador.ConexaoHandler;
+import gerenciador.Monitor;
+import host.Desktop;
 
 public class MouseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private Monitor monitor;
     private int x = 0, y = 0;
-    private int widthDesktop = 1920, heightDesktop = 1080;
+    private int larguraDesktop = Desktop.largura, alturaDesktop = Desktop.altura;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +25,16 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_mouse);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        monitor = ConexaoHandler.getMonitor();
         LinearLayout LinearLayoutClique = (LinearLayout) findViewById(R.id.LinearLayoutClique);
         LinearLayoutClique.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                int xMobile = (int) event.getX();
-                int yMobile = (int) event.getY();
-                int widthMobile = v.getWidth();
-                int heightMobile = v.getHeight();
-                x = (xMobile * widthDesktop) / widthMobile;
-                y = (yMobile * heightDesktop) / heightMobile;
-
+                int larguraAndroid = v.getWidth();
+                int alturaAndroid = v.getHeight();
+                x = (int) (event.getX() - 0) * (larguraDesktop - 0) / (larguraAndroid - 0);
+                y = (int) (event.getY() - 0) * (alturaDesktop - 0) / (alturaAndroid - 0);
                 final String comando = Comando.moverMouse(x, y);
 
                 Thread enviar = new Thread(new Runnable() {
@@ -56,6 +49,11 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
 
     @Override
     public void onClick(View v) {
