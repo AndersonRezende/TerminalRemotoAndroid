@@ -5,6 +5,7 @@
     style="@style/terminalLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".MouseActivity">
 
     <LinearLayout
@@ -15,6 +16,7 @@
         android:isScrollContainer="false"
         android:nestedScrollingEnabled="true"
         android:orientation="vertical"
+        android:background="@drawable/borda_touchpad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
