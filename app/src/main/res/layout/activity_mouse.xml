@@ -18,17 +18,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <FrameLayout
-            android:id="@+id/FrameLayoutTela"
+        <LinearLayout
+            android:id="@+id/LinearLayoutClique"
+            style="@style/touchpadArea"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </FrameLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:orientation="horizontal"
+            android:scrollbars="vertical"></LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <Button
@@ -48,16 +53,6 @@
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:text="@string/bt_direito" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/LinearLayoutClique"
-            style="@style/touchpadArea"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:scrollbars="vertical">
-
         </LinearLayout>
 
     </LinearLayout>

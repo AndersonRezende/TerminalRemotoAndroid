@@ -24,6 +24,7 @@ public class MouseActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mouse);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Touchpad");
 
         monitor = ConexaoHandler.getMonitor();
         LinearLayout LinearLayoutClique = (LinearLayout) findViewById(R.id.LinearLayoutClique);
